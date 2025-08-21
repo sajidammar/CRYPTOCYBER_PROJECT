@@ -56,4 +56,5 @@ macos/
 linux/
 ios/
 android/
+lib/testing.dart
 
