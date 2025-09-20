@@ -45,16 +45,3 @@ app.*.map.json
 /android/app/release
 .gitignore
 .metadata
-.gitignore
-analysis_options.yaml
-pubspec.lock
-README.md
-windows/
-web/
-test/
-macos/
-linux/
-ios/
-android/
-lib/testing.dart
-
