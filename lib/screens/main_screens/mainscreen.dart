@@ -1,4 +1,4 @@
-import 'package:cryptocyber/screens/drowerscreen.dart';
+import 'package:cryptocyber/screens/main_screens/drowerscreen.dart';
 import 'package:flutter/material.dart';
 
 class MainScreen extends StatelessWidget {
