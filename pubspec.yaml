@@ -36,6 +36,9 @@ dependencies:
   cupertino_icons: ^1.0.8
   crypto: ^3.0.6
   file_picker: ^10.3.3
+  image: ^4.5.4
+  image_picker: ^1.2.0
+  exif: ^3.3.0
 
 dev_dependencies:
   flutter_test:
