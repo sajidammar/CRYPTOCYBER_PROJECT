@@ -1,20 +1,25 @@
+import 'package:cryptocyber/screens/analysis_screens/mainanalysisscreen.dart';
 import 'package:flutter/material.dart';
 
-// ignore: must_be_immutable
+// ignore: must_be_immutable, camel_case_types
 class sidebarbutton extends StatelessWidget {
-  sidebarbutton(IconData icon, String label, {super.key}) {
-    icon = icon;
+  sidebarbutton(IconData icon, String label,Widget screenname, {super.key}) {
+    this.icon = icon;
     this.label = label;
+    this.screenname = screenname;
   }
 
   IconData? icon;
   String? label;
+  Widget? screenname;
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return TextButton.icon(
-      onPressed: () {},
+      onPressed: () {
+        Navigator.push(context, MaterialPageRoute(builder: (cont)=>screenname!));
+      },
       style: TextButton.styleFrom(
         padding: const EdgeInsets.all(16),
         foregroundColor: Colors.white,
@@ -78,10 +83,10 @@ class BuildMainArea extends StatelessWidget {
                           ],
                         ),
                       ),
-                      sidebarbutton(Icons.vpn_key, 'Encryption'),
-                      sidebarbutton(Icons.lock_open, 'Decryption'),
-                      sidebarbutton(Icons.analytics, 'Analysis'),
-                      sidebarbutton(Icons.settings, 'Settings'),
+                      sidebarbutton(Icons.vpn_key, 'Encryption',Placeholder()),
+                      sidebarbutton(Icons.lock_open, 'Decryption',Placeholder()),
+                      sidebarbutton(Icons.analytics, 'Analysis',MainAnalysisScreen()),
+                      sidebarbutton(Icons.settings, 'Settings',Placeholder()),
                     ],
                   ),
                 ),
