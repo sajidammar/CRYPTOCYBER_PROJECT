@@ -64,6 +64,6 @@ We welcome feature suggestions. Please open an issue and describe the enhancemen
 
 ### Code Owners
 
-The project has a CODEOWNERS file that specifies who must review the code. Currently, the project owner (@your-github-username) is the code owner.
+The project has a CODEOWNERS file that specifies who must review the code. Currently, the project owner (@sajidammar&@nabeelammar) is the code owner.
 
 Thank you for contributing!
