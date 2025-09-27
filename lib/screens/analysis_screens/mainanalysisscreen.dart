@@ -1,3 +1,4 @@
+import 'package:cryptocyber/screens/analysis_screens/image_analysis_screen.dart';
 import 'package:flutter/material.dart';
 import 'file_analysis_screen.dart';
 
@@ -13,10 +14,12 @@ class _MainAnalysisScreenState extends State<MainAnalysisScreen> {
 
   final List<Widget> _tabs = [
     FileAnalysisTab(),
+    ImageAnalysisTab()
   ];
 
   final List<String> _tabTitles = [
     'تحليل ملف',
+    'تحليل صورة'
   ];
 
   @override
