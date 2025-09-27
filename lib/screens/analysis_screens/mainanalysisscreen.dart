@@ -12,8 +12,7 @@ class _MainAnalysisScreenState extends State<MainAnalysisScreen> {
   int _currentIndex = 0;
 
   final List<Widget> _tabs = [
-    // FileAnalysisTab(),
-    // ImageAnalysisTab(),
+    FileAnalysisTab(),
   ];
 
   final List<String> _tabTitles = [
