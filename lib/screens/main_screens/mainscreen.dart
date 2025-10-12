@@ -8,6 +8,7 @@ class MainScreen extends StatelessWidget {
     // TODO: implement build
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+
       title: 'CryptoCyberApp',
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: const Color(0xff0b0f1a),

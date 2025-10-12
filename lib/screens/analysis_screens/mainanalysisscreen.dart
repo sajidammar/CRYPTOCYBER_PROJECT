@@ -18,23 +18,28 @@ class _MainAnalysisScreenState extends State<MainAnalysisScreen> {
   ];
 
   final List<String> _tabTitles = [
-    'تحليل ملف',
-    'تحليل صورة'
+    'File Analysis',
+    'Image Analysis'
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Color(0xFF101622),
+        elevation: 0,
+        centerTitle: true,
         title: Text(
           _tabTitles[_currentIndex],
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
+            color: Colors.white,
           ),
         ),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () {
             if (Navigator.canPop(context)) {
               Navigator.pop(context);
@@ -43,7 +48,7 @@ class _MainAnalysisScreenState extends State<MainAnalysisScreen> {
         ),
         actions: [
           IconButton(
-            icon: Icon(Icons.info),
+            icon: Icon(Icons.info_outline, color: Colors.white),
             onPressed: () {
               showDialog(
                 context: context,
@@ -70,10 +75,26 @@ class _MainAnalysisScreenState extends State<MainAnalysisScreen> {
             _currentIndex = index;
           });
         },
+        backgroundColor: Color(0xFF101622),
+        selectedItemColor: Colors.tealAccent,
+        unselectedItemColor: Color(0xFF8E8E93),
+        selectedLabelStyle: TextStyle(
+          fontWeight: FontWeight.w500,
+        ),
+        unselectedLabelStyle: TextStyle(
+          fontWeight: FontWeight.w400,
+        ),
+        type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.insert_drive_file),
-            label: 'تحليل ملف',
+            icon: Icon(Icons.insert_drive_file_outlined),
+            activeIcon: Icon(Icons.insert_drive_file),
+            label: 'File Analysis',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.image_outlined),
+            activeIcon: Icon(Icons.image),
+            label: 'Image Analysis',
           ),
         ],
       ),

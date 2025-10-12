@@ -45,13 +45,14 @@ class BuildMainArea extends StatelessWidget {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: const Text('CryptoCyber'),
+        title: const Text('CryptoCyber',style: TextStyle(color: Colors.tealAccent),),
+        centerTitle: true,
         leading:
             showDrawerButton!
                 ? Builder(
                   builder:
                       (context) => IconButton(
-                        icon: const Icon(Icons.menu),
+                        icon: const Icon(Icons.menu,color: Colors.tealAccent,),
                         onPressed: () => Scaffold.of(context).openDrawer(),
                       ),
                 )
@@ -144,7 +145,7 @@ class DetailsPanel extends StatelessWidget {
               children: [
                 const Text(
                   'Dtails CryptoCyber',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold,color: Colors.tealAccent),
                 ),
                 const Spacer(),
                 IconButton(
@@ -161,10 +162,10 @@ class DetailsPanel extends StatelessWidget {
                   spacing: 50,
                   children: [
                     SizedBox(width: double.infinity),
-                    Icon(size: 100, Icons.enhanced_encryption),
-                    Icon(size: 100, Icons.vpn_key),
-                    Icon(size: 100, Icons.analytics_outlined),
-                    Icon(size: 100, Icons.no_encryption_gmailerrorred),
+                    Icon(size: 100, Icons.enhanced_encryption,color: Colors.tealAccent),
+                    Icon(size: 100, Icons.vpn_key,color: Colors.tealAccent,),
+                    Icon(size: 100, Icons.analytics_outlined,color: Colors.tealAccent),
+                    Icon(size: 100, Icons.no_encryption_gmailerrorred,color: Colors.tealAccent),
                   ],
                 ),
               ),
