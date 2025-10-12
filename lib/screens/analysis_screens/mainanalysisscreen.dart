@@ -75,6 +75,10 @@ class _MainAnalysisScreenState extends State<MainAnalysisScreen> {
             icon: Icon(Icons.insert_drive_file),
             label: 'تحليل ملف',
           ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.image),
+            label: 'تحليل صورة',
+          ),
         ],
       ),
     );
