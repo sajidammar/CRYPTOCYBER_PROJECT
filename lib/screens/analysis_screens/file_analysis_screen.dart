@@ -13,7 +13,7 @@ class FileAnalysisTab extends StatefulWidget {
 }
 
 class _FileAnalysisTabState extends State<FileAnalysisTab> {
-  String _analysisResult = 'لم يتم تحليل أي ملف بعد';
+  String _analysisResult = 'No file analyzed yet';
   bool _isAnalyzing = false;
   PlatformFile? _selectedFile;
 
@@ -30,44 +30,44 @@ class _FileAnalysisTabState extends State<FileAnalysisTab> {
 
   // فئات الملفات
   final Map<String, String> _fileCategories = {
-    'txt': 'مستند نصي',
-    'pdf': 'مستند PDF',
-    'doc': 'مستند Word',
-    'docx': 'مستند Word',
-    'xls': 'جدول بيانات Excel',
-    'xlsx': 'جدول بيانات Excel',
-    'ppt': 'عرض تقديمي',
-    'pptx': 'عرض تقديمي',
-    'zip': 'أرشيف مضغوط',
-    'rar': 'أرشيف مضغوط',
-    '7z': 'أرشيف مضغوط',
-    'tar': 'أرشيف مضغوط',
-    'gz': 'أرشيف مضغوط',
-    'exe': 'ملف تنفيذي',
-    'dll': 'مكتبة ديناميكية',
-    'msi': 'مثبت Windows',
-    'apk': 'تطبيق أندرويد',
-    'html': 'صفحة ويب',
-    'htm': 'صفحة ويب',
-    'css': 'ملف تنسيق',
-    'js': 'ملف JavaScript',
-    'json': 'بيانات JSON',
-    'xml': 'بيانات XML',
-    'mp3': 'ملف صوتي',
-    'wav': 'ملف صوتي',
-    'mp4': 'ملف فيديو',
-    'avi': 'ملف فيديو',
-    'mkv': 'ملف فيديو',
-    'sql': 'نص SQL',
-    'db': 'ملف قاعدة بيانات',
-    'sqlite': 'ملف قاعدة بيانات',
-    'py': 'نص Python',
-    'java': 'كود Java',
-    'cpp': 'كود C++',
-    'c': 'كود C',
-    'cs': 'كود C#',
-    'php': 'نص PHP',
-    'rb': 'نص Ruby'
+    'txt': 'Text Document',
+    'pdf': 'PDF Document',
+    'doc': 'Word Document',
+    'docx': 'Word Document',
+    'xls': 'Excel Spreadsheet',
+    'xlsx': 'Excel Spreadsheet',
+    'ppt': 'PowerPoint Presentation',
+    'pptx': 'PowerPoint Presentation',
+    'zip': 'Compressed Archive',
+    'rar': 'Compressed Archive',
+    '7z': 'Compressed Archive',
+    'tar': 'Compressed Archive',
+    'gz': 'Compressed Archive',
+    'exe': 'Executable File',
+    'dll': 'Dynamic Library',
+    'msi': 'Windows Installer',
+    'apk': 'Android Application',
+    'html': 'Web Page',
+    'htm': 'Web Page',
+    'css': 'Stylesheet',
+    'js': 'JavaScript File',
+    'json': 'JSON Data',
+    'xml': 'XML Data',
+    'mp3': 'Audio File',
+    'wav': 'Audio File',
+    'mp4': 'Video File',
+    'avi': 'Video File',
+    'mkv': 'Video File',
+    'sql': 'SQL Script',
+    'db': 'Database File',
+    'sqlite': 'Database File',
+    'py': 'Python Script',
+    'java': 'Java Source',
+    'cpp': 'C++ Source',
+    'c': 'C Source',
+    'cs': 'C# Source',
+    'php': 'PHP Script',
+    'rb': 'Ruby Script'
   };
 
   Future<void> _pickAndAnalyzeFile() async {
@@ -83,9 +83,9 @@ class _FileAnalysisTabState extends State<FileAnalysisTab> {
         // التحقق إذا كان الملف صورة
         if (_isImageFile(selectedFile.extension)) {
           setState(() {
-            _analysisResult = 'نوع الملف هذا غير مدعوم للتحليل\n\n'
-                'يرجى استخدام تبويب "تحليل الصور" لملفات الصور.\n'
-                'يرجى اختيار نوع ملف مختلف';
+            _analysisResult = 'This file type is not supported for analysis\n\n'
+                'Please use the "Image Analysis" tab for image files.\n'
+                'Please select a different file type';
             _isAnalyzing = false;
           });
           return;
@@ -94,7 +94,7 @@ class _FileAnalysisTabState extends State<FileAnalysisTab> {
         setState(() {
           _selectedFile = selectedFile;
           _isAnalyzing = true;
-          _analysisResult = 'جاري تحليل الملف...';
+          _analysisResult = 'Analyzing file...';
         });
 
         await Future.delayed(Duration(milliseconds: 500));
@@ -107,13 +107,13 @@ class _FileAnalysisTabState extends State<FileAnalysisTab> {
         });
       } else {
         setState(() {
-          _analysisResult = 'لم يتم اختيار أي ملف للتحليل';
+          _analysisResult = 'No file selected for analysis';
           _isAnalyzing = false;
         });
       }
     } catch (e) {
       setState(() {
-        _analysisResult = 'خطأ في تحليل الملف: $e';
+        _analysisResult = 'Error analyzing file: $e';
         _isAnalyzing = false;
       });
     }
@@ -126,16 +126,16 @@ class _FileAnalysisTabState extends State<FileAnalysisTab> {
   }
 
   Future<String> _analyzeFile(PlatformFile file) async {
-    String result = '════════ تحليل الملف ════════\n\n';
+    String result = '════════ File Analysis ════════\n\n';
 
-    result += '📁 المعلومات الأساسية:\n';
+    result += '📁 Basic Information:\n';
     result += '────────────────────\n';
-    result += '📁 اسم الملف: ${file.name}\n';
-    result += '📊 حجم الملف: ${_formatFileSize(file.size)}\n';
-    result += '🔤 الامتداد: ${file.extension ?? 'غير معروف'}\n';
-    result += '📄 نوع الملف: ${_getFileType(file.extension)}\n\n';
+    result += '📁 File Name: ${file.name}\n';
+    result += '📊 File Size: ${_formatFileSize(file.size)}\n';
+    result += '🔤 Extension: ${file.extension ?? 'Unknown'}\n';
+    result += '📄 File Type: ${_getFileType(file.extension)}\n\n';
 
-    result += '🔐 تحليل التجزئة:\n';
+    result += '🔐 Hash Analysis:\n';
     result += '────────────────────\n';
 
     if (file.bytes != null) {
@@ -143,14 +143,14 @@ class _FileAnalysisTabState extends State<FileAnalysisTab> {
       result += 'SHA-1: ${_calculateSHA1(file.bytes!)}\n';
       result += 'SHA-256: ${_calculateSHA256(file.bytes!)}\n\n';
     } else {
-      result += '⚠️ لا يمكن تحليل التجزئة - بيانات الملف غير متوفرة\n\n';
+      result += '⚠️ Cannot analyze hash - file data unavailable\n\n';
     }
 
-    result += '📄 تحليل المحتوى:\n';
+    result += '📄 Content Analysis:\n';
     result += '────────────────────\n';
     result += _analyzeFileContent(file.bytes, file.extension ?? '');
 
-    result += '\n🔒 تحليل التشفير والأمان:\n';
+    result += '\n🔒 Encryption & Security Analysis:\n';
     result += '────────────────────\n';
     result += _analyzeEncryptionAndSecurity(file.bytes, file.extension ?? '');
 
@@ -158,8 +158,8 @@ class _FileAnalysisTabState extends State<FileAnalysisTab> {
   }
 
   String _getFileType(String? extension) {
-    if (extension == null) return 'نوع ملف غير معروف';
-    return _fileCategories[extension.toLowerCase()] ?? 'نوع ملف غير معروف';
+    if (extension == null) return 'Unknown file type';
+    return _fileCategories[extension.toLowerCase()] ?? 'Unknown file type';
   }
 
   String _calculateMD5(List<int> bytes) {
@@ -175,7 +175,7 @@ class _FileAnalysisTabState extends State<FileAnalysisTab> {
   }
 
   String _analyzeFileContent(List<int>? bytes, String extension) {
-    if (bytes == null) return '⚠️ لا يمكن تحليل المحتوى - بيانات الملف غير متوفرة\n\n';
+    if (bytes == null) return '⚠️ Cannot analyze content - file data unavailable\n\n';
 
     String analysis = '';
 
@@ -187,17 +187,17 @@ class _FileAnalysisTabState extends State<FileAnalysisTab> {
           content = content.substring(0, 500) + '...';
         }
 
-        analysis += 'النص المقروء: ${content.length} حرف\n';
-        analysis += 'العينات: ${content.replaceAll('\n', ' ')}\n\n';
+        analysis += 'Readable text: ${content.length} characters\n';
+        analysis += 'Samples: ${content.replaceAll('\n', ' ')}\n\n';
       } catch (e) {
-        analysis += 'الملف غير نصي أو مشفر\n\n';
+        analysis += 'File is not text-based or encrypted\n\n';
       }
     } else {
-      analysis += 'ملف ثنائي - التحليل محدود للمحتوى النصي\n\n';
+      analysis += 'Binary file - content analysis limited\n\n';
     }
 
     // تحليل توقيع الملف
-    analysis += '🔍 تحليل توقيع الملف:\n';
+    analysis += '🔍 File Signature Analysis:\n';
     analysis += _analyzeFileSignature(bytes, extension);
 
     return analysis;
@@ -209,58 +209,58 @@ class _FileAnalysisTabState extends State<FileAnalysisTab> {
   }
 
   String _analyzeFileSignature(List<int> bytes, String extension) {
-    if (bytes.length < 8) return '  الملف صغير جداً لتحليل التوقيع\n';
+    if (bytes.length < 8) return '  File too small for signature analysis\n';
 
     String analysis = '';
     List<int> header = bytes.sublist(0, math.min(16, bytes.length));
     String headerHex = header.map((b) => b.toRadixString(16).padLeft(2, '0')).join(' ');
 
-    analysis += '  رأس الملف (hex): $headerHex\n';
+    analysis += '  File header (hex): $headerHex\n';
 
     // التواقيع الشائعة للملفات
     if (headerHex.startsWith('25 50 44 46')) {
-      analysis += '  ✅ مستند PDF (تم التأكد من التوقيع)\n';
+      analysis += '  ✅ PDF document (confirmed by signature)\n';
     } else if (headerHex.startsWith('50 4b 03 04') || headerHex.startsWith('50 4b 05 06') || headerHex.startsWith('50 4b 07 08')) {
-      analysis += '  ✅ أرشيف ZIP (تم التأكد من التوقيع)\n';
+      analysis += '  ✅ ZIP archive (confirmed by signature)\n';
     } else if (headerHex.startsWith('52 61 72 21 1a 07 00')) {
-      analysis += '  ✅ أرشيف RAR (تم التأكد من التوقيع)\n';
+      analysis += '  ✅ RAR archive (confirmed by signature)\n';
     } else if (headerHex.startsWith('37 7a bc af 27 1c')) {
-      analysis += '  ✅ أرشيف 7-Zip (تم التأكد من التوقيع)\n';
+      analysis += '  ✅ 7-Zip archive (confirmed by signature)\n';
     } else if (headerHex.startsWith('d0 cf 11 e0 a1 b1 1a e1')) {
-      analysis += '  ✅ مستند Microsoft Office\n';
+      analysis += '  ✅ Microsoft Office document\n';
     } else if (headerHex.startsWith('4d 5a')) {
-      analysis += '  ✅ ملف تنفيذي لنظام Windows (EXE/DLL)\n';
+      analysis += '  ✅ Windows executable (EXE/DLL)\n';
     } else if (bytes.length >= 2 && bytes[0] == 0x23 && bytes[1] == 0x21) {
-      analysis += '  ✅ ملف نصي تنفيذي (shebang)\n';
+      analysis += '  ✅ Script file (shebang detected)\n';
     } else {
-      analysis += '  ⚠️ توقيع ملف غير معروف\n';
+      analysis += '  ⚠️ Unknown file signature\n';
     }
 
     return analysis;
   }
 
   String _analyzeEncryptionAndSecurity(List<int>? bytes, String extension) {
-    if (bytes == null || bytes.isEmpty) return 'لا يمكن تحليل التشفير - بيانات فارغة\n';
+    if (bytes == null || bytes.isEmpty) return 'Cannot analyze encryption - empty data\n';
 
     String analysis = '';
 
     // تحليل الانتروبي
     double entropy = _calculateEntropy(bytes);
-    analysis += '📊 الانتروبي: ${entropy.toStringAsFixed(2)}\n';
+    analysis += '📊 Entropy: ${entropy.toStringAsFixed(2)}\n';
     if (entropy > 7.5) {
-      analysis += '🔐 انتروبي عالي -可能加密或压缩\n';
+      analysis += '🔐 High entropy - Possibly encrypted or compressed\n';
     } else if (entropy > 6.0) {
-      analysis += '📖 انتروبي متوسط - محتوى مختلط\n';
+      analysis += '📖 Medium entropy - Mixed content\n';
     } else {
-      analysis += '📝 انتروبي منخفض -很可能为纯文本或结构化数据\n';
+      analysis += '📝 Low entropy - Likely plain text or structured data\n';
     }
 
     // تقييم المخاطر
-    analysis += '\n⚠️ تقييم المخاطر:\n';
+    analysis += '\n⚠️ Risk Assessment:\n';
     analysis += _assessRisk(extension, entropy);
 
     // فحص سلامة الملف
-    analysis += '\n🛡️ سلامة الملف:\n';
+    analysis += '\n🛡️ File Integrity:\n';
     analysis += _checkFileIntegrity(bytes, extension);
 
     return analysis;
@@ -271,40 +271,40 @@ class _FileAnalysisTabState extends State<FileAnalysisTab> {
     final mediumRiskExtensions = {'zip', 'rar', '7z', 'jar', 'iso'};
 
     if (highRiskExtensions.contains(extension.toLowerCase())) {
-      return '  خطورة متوسطة - ملف تنفيذي\n';
+      return '  Medium risk - Executable file\n';
     } else if (mediumRiskExtensions.contains(extension.toLowerCase())) {
-      return '  خطورة منخفضة - ملف أرشيف\n';
+      return '  Low risk - Archive file\n';
     } else if (entropy > 7.8 && !_isTextBasedFile(extension)) {
-      return '  خطورة عالية - ملف مجهول أو مشبوه\n';
+      return '  High risk - Unknown or suspicious file\n';
     } else {
-      return '  خطورة منخفضة - ملف عادي\n';
+      return '  Low risk - Normal file\n';
     }
   }
 
   String _checkFileIntegrity(List<int> bytes, String extension) {
     // فحوصات السلامة الأساسية بناءً على نوع الملف
-    if (bytes.isEmpty) return '  ❌ ملف فارغ\n';
+    if (bytes.isEmpty) return '  ❌ Empty file\n';
 
     if (extension.toLowerCase() == 'pdf' && bytes.length > 4) {
       String start = String.fromCharCodes(bytes.sublist(0, 4));
       String end = String.fromCharCodes(bytes.sublist(bytes.length - 6));
       if (start == '%PDF' && end.contains('%%EOF')) {
-        return '  ✅ الملف يبدو سليماً\n';
+        return '  ✅ File appears to be valid\n';
       } else {
-        return '  ⚠️ تم اكتشاف تلف محتمل في الملف\n';
+        return '  ⚠️ Potential file corruption detected\n';
       }
     }
 
     if ((extension.toLowerCase() == 'zip' || extension.toLowerCase() == 'jar') && bytes.length > 4) {
       String start = bytes.sublist(0, 2).map((b) => b.toRadixString(16)).join('');
       if (start == '504b') {
-        return '  ✅ الملف يبدو سليماً\n';
+        return '  ✅ File appears to be valid\n';
       } else {
-        return '  ⚠️ تم اكتشاف تلف محتمل في الملف\n';
+        return '  ⚠️ Potential file corruption detected\n';
       }
     }
 
-    return '  ✅ تم اجتياز فحص السلامة الأساسي\n';
+    return '  ✅ Basic integrity check passed\n';
   }
 
   double _calculateEntropy(List<int> bytes) {
@@ -429,6 +429,7 @@ class _FileAnalysisTabState extends State<FileAnalysisTab> {
                   if (_selectedFile != null) ...[
                     SizedBox(height: 16),
                     Container(
+                      width: double.infinity, // إصلاح التدفق
                       padding: EdgeInsets.all(12),
                       decoration: BoxDecoration(
                         color: Color(0xFF1B5E20),
@@ -440,11 +441,13 @@ class _FileAnalysisTabState extends State<FileAnalysisTab> {
                         children: [
                           Icon(Icons.check_circle, color: Color(0xFF4CAF50), size: 16),
                           SizedBox(width: 8),
-                          TranslatedText(
-                            englishText: 'Selected file: ${_selectedFile!.name}',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 12,
+                          Expanded( // إصلاح التدفق
+                            child: TranslatedText(
+                              englishText: 'Selected file: ${_selectedFile!.name}',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 12,
+                              ),
                             ),
                           ),
                         ],

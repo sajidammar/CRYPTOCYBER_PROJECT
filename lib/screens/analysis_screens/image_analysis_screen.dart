@@ -298,6 +298,7 @@ class _ImageAnalysisTabState extends State<ImageAnalysisTab> {
                   if (_selectedImage != null) ...[
                     SizedBox(height: 16),
                     Container(
+                      width: double.infinity,
                       padding: EdgeInsets.all(12),
                       decoration: BoxDecoration(
                         color: Color(0xFF1B5E20),
@@ -309,11 +310,13 @@ class _ImageAnalysisTabState extends State<ImageAnalysisTab> {
                         children: [
                           Icon(Icons.check_circle, color: Color(0xFF4CAF50), size: 16),
                           SizedBox(width: 8),
-                          TranslatedText(
-                            englishText: 'Selected image: ${_selectedImage!.path.split('/').last}',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 12,
+                          Expanded(
+                            child: TranslatedText(
+                              englishText: 'Selected image: ${_selectedImage!.path.split('/').last}',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 12,
+                              ),
                             ),
                           ),
                         ],
