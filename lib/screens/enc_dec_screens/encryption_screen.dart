@@ -10,14 +10,14 @@ import 'package:cross_file/cross_file.dart';
 import 'package:crypto/crypto.dart';
 import 'package:encrypt/encrypt.dart' as encrypt;
 
-class EncryptionPage extends StatefulWidget {
-  const EncryptionPage({super.key});
+class EncryptionScreen extends StatefulWidget {
+  const EncryptionScreen({super.key});
 
   @override
-  State<EncryptionPage> createState() => _EncryptionPageState();
+  State<EncryptionScreen> createState() => _EncryptionScreenState();
 }
 
-class _EncryptionPageState extends State<EncryptionPage> {
+class _EncryptionScreenState extends State<EncryptionScreen> {
   String _passphrase = '';
   PlatformFile? _selectedFile;
   String _status = 'اختر ملفاً للتشفير';
