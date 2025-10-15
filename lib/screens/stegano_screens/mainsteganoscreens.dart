@@ -1,5 +1,5 @@
- import 'package:cryptocyber/screens/syegano_screens/stegano_image_screen.dart';
-import 'package:cryptocyber/screens/syegano_screens/unstegano_screen.dart';
+import 'package:cryptocyber/screens/stegano_screens/stegano_image_screens.dart';
+import 'package:cryptocyber/screens/stegano_screens/unstegano_screens.dart';
 import 'package:flutter/material.dart';
 class MainSteganoScreen extends StatefulWidget {
   const MainSteganoScreen({super.key});
