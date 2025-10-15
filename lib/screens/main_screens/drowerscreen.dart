@@ -1,4 +1,6 @@
 import 'package:cryptocyber/screens/analysis_screens/mainanalysisscreen.dart';
+import 'package:cryptocyber/screens/enc_dec_screens/main_enc_dec_screen.dart';
+import 'package:cryptocyber/screens/stegano_screens/mainsteganoscreens.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable, camel_case_types
@@ -84,8 +86,8 @@ class BuildMainArea extends StatelessWidget {
                           ],
                         ),
                       ),
-                      sidebarbutton(Icons.vpn_key, 'Encryption',Placeholder()),
-                      sidebarbutton(Icons.lock_open, 'Decryption',Placeholder()),
+                      sidebarbutton(Icons.vpn_key, 'Encryption&Decryption',MainEncryptDecryptScreen()),
+                      sidebarbutton(Icons.lock_open, 'Steganography',MainSteganoScreen()),
                       sidebarbutton(Icons.analytics, 'Analysis',MainAnalysisScreen()),
                       sidebarbutton(Icons.settings, 'Settings',Placeholder()),
                     ],

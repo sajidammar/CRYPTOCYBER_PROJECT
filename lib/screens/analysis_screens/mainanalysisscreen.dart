@@ -25,7 +25,7 @@ class _MainAnalysisScreenState extends State<MainAnalysisScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      // backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Color(0xFF101622),
         elevation: 0,
