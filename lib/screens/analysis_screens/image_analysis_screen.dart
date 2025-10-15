@@ -1,3 +1,4 @@
+import 'dart:ffi';
 import 'dart:io';
 import 'dart:math' as math;
 import 'transilation_image_class.dart';
@@ -110,7 +111,7 @@ class _ImageAnalysisTabState extends State<ImageAnalysisTab> {
       for (int y = 0; y < math.min(3, image.height); y++) {
         analysis += '  ';
         for (int x = 0; x < math.min(3, image.width); x++) {
-          int color = image.getPixel(x, y) as int;
+          int color = int.parse(image.getPixel(x, y).toString());
           String hex = color.toRadixString(16).padLeft(8, '0');
           analysis += '#${hex.substring(2)} ';
         }
@@ -183,9 +184,9 @@ class _ImageAnalysisTabState extends State<ImageAnalysisTab> {
       analysis += '📊 LSB Ratio: ${(ratio * 100).toStringAsFixed(1)}%\n';
 
       if (ratio > 0.6 || ratio < 0.4) {
-        analysis += '⚠️ Unusual activity - may contain hidden data\n';
-      } else {
         analysis += '✅ Normal ratio - no obvious hidden data\n';
+      } else {
+        analysis += '⚠️ Unusual activity - may contain hidden data\n';
       }
     }
 
